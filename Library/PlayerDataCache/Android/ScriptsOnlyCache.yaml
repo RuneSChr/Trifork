@@ -56,15 +56,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11260}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11290}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11868}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 12226}
+      Script: {instanceID: 11870}
+    - Class: 114
+      Script: {instanceID: 12228}
     - Class: 114
       Script: {instanceID: 12446}
     - Class: 114
@@ -76,11 +78,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12708}
     - Class: 114
-      Script: {instanceID: 12852}
+      Script: {instanceID: 12854}
     - Class: 114
-      Script: {instanceID: 13054}
-    - Class: 114
-      Script: {instanceID: 13870}
+      Script: {instanceID: 13056}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -110,6 +110,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
+  - hash:
+      serializedVersion: 2
+      Hash: e31578f7dda30041986cbc1e4393d0a4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PinchZoom
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -418,6 +424,12 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Timers
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -524,13 +536,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: d9a5001def34e1b1c009bb7684e2a238
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PinchZoom
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/runec/Documents/QuickAcces/UnityRepos/Trifork/build/test.apk
+  playerPath: C:/Users/runec/Documents/QuickAcces/UnityRepos/Trifork/build/testzoom.apk

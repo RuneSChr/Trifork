@@ -84,6 +84,7 @@ namespace TriforkTest
 
         }
         #endregion
+
         #region Do random
         public void DoRando()
         {
@@ -91,12 +92,9 @@ namespace TriforkTest
             DoAction(rand,random);
         }
         #endregion
+
         #region helper methods
-        //Worth a method call?
-        public void FlipBool(bool running)
-        {
-            running = !running;
-        }
+       
         public void ClickIncrease(int numberOfClicks)
         {
             numberOfClicks++;
@@ -132,10 +130,5 @@ namespace TriforkTest
             }
         }
         #endregion
-    }
-
-    struct HelperMethods
-    {
-
     }
 }
