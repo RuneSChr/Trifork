@@ -5,22 +5,19 @@ using TMPro;
 
 public class PinchZoom : MonoBehaviour
 {
-    [SerializeField]
-    private TMP_Text touchTxt, distanceTxt;
+  
     [SerializeField]
     private Camera main;
 
-    private float distance, tempDistance, distanceDelta0, distanceDelta1, deltaDistance, deltaDistanceDiff;
+    private float prevTouchDeltaMag, touchDeltaMag, deltaMagnitudeDiff;
     private float zoomSpeed = 0.5f;
-
-    [SerializeField]
-    private Vector2 touch0PrevFrame, touch1PrevFrame;
+    private Vector2 touch0PrevFrame, touch1PrevFrame, touchZeroPrevPos, touchOnePrevPos;
+    private Touch touchZero, touchOne;
 
     // Start is called before the first frame update
     void Start()
     {
-        distanceTxt.text = "start";
-        touchTxt.text = "touchstart";
+      
     }
 
     // Update is called once per frame
@@ -46,31 +43,28 @@ public class PinchZoom : MonoBehaviour
         //    //main.fieldOfView = Mathf.Clamp(main.fieldOfView, .1f, 179.9f);
         //    //deltaDistance = distance - tempDistance;
 
-        //    distanceTxt.text = "is it ortho? " + deltaMagnitudeDifference;
         //    //touchTxt.text = "is it negative? " + (distance - tempDistance);
 
 
-
-        //}
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
             // Store both touches.
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
+            touchZero = Input.GetTouch(0);
+            touchOne = Input.GetTouch(1);
 
             // Find the position in the previous frame of each touch.
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+            touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
             // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+            prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
             // Find the difference in the distances between each frame.
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+            deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-            main.fieldOfView += deltaMagnitudeDiff * .05f;
+            main.fieldOfView += deltaMagnitudeDiff * zoomSpeed;
             main.fieldOfView = Mathf.Clamp(main.fieldOfView, .1f, 179.9f);
         }
     }

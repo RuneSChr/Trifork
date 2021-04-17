@@ -53,7 +53,7 @@ namespace TriforkTest
             }
             //cleanup
             DoAction(numberOfClicks,target);
-            ResetClicks(numberOfClicks);
+            ResetClicks();
             running = !running;
         }
         /// <summary>
@@ -79,7 +79,7 @@ namespace TriforkTest
                 yield return new WaitForSeconds(1);
             }
             //cleanup
-            ResetClicks(numberOfClicks);
+            ResetClicks();
             DoAction(numberOfClicks,target);
 
         }
@@ -95,12 +95,12 @@ namespace TriforkTest
 
         #region helper methods
        
-        public void ClickIncrease(int numberOfClicks)
+        public void ClickIncrease()
         {
             numberOfClicks++;
         }
 
-        public void ResetClicks(int numberOfClicks)
+        public void ResetClicks()
         {
             numberOfClicks = 0;
         }

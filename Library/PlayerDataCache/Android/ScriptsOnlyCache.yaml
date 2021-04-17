@@ -112,7 +112,7 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: 854ab94ec142d7d7e90756154c57fa11
+      Hash: 8b49d9e25f594d8c6d80883253d720e8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PinchZoom
