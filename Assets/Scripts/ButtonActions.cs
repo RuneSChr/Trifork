@@ -16,9 +16,10 @@ namespace TriforkTest
         [SerializeField]
         private TMP_Text clickText;
 
-
         private bool runningReset, running;
         private int numberOfClicks = 0;
+
+        public Animator anim;
 
         // Update is called once per frame
         void Update()
@@ -114,18 +115,22 @@ namespace TriforkTest
                 case 5:
                     //change to magenta
                     target.GetComponent<Image>().color = Color.magenta;
+                    anim.SetInteger("numberOfClicks", 5);
                     break;
                 case 2:
                     //red
                     target.GetComponent<Image>().color = Color.red;
+                    anim.SetInteger("numberOfClicks", 2);
                     break;
                 case 1:
                     //blue
                     target.GetComponent<Image>().color = Color.blue;
+                    anim.SetInteger("numberOfClicks", 1);
                     break;
                 default:
                     //green
                     target.GetComponent<Image>().color = Color.green;
+                    anim.SetInteger("numberOfClicks", 0);
                     break;
             }
         }
