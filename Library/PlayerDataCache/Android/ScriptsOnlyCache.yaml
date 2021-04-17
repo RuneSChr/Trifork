@@ -112,7 +112,7 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: e31578f7dda30041986cbc1e4393d0a4
+      Hash: 854ab94ec142d7d7e90756154c57fa11
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PinchZoom
@@ -539,4 +539,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/runec/Documents/QuickAcces/UnityRepos/Trifork/build/testzoom.apk
+  playerPath: C:/Users/runec/Documents/QuickAcces/UnityRepos/Trifork/build/testzoomCopiedWithMovement.apk

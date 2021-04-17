@@ -1,4 +1,4 @@
-#Sat Apr 17 11:53:56 CEST 2021
+#Sat Apr 17 13:24:01 CEST 2021
 base.0=C\:\\Users\\runec\\Documents\\QuickAcces\\UnityRepos\\Trifork\\TriforkTest\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\release\\0
 path.0=classes.dex
 renamed.0=classes.dex
