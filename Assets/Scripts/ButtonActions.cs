@@ -53,6 +53,7 @@ namespace TriforkTest
                 yield return new WaitForSeconds(1);
             }
             //cleanup
+            anim.SetInteger("numberOfClicks", numberOfClicks);
             DoAction(numberOfClicks,target);
             ResetClicks();
             running = !running;
@@ -81,8 +82,8 @@ namespace TriforkTest
             }
             //cleanup
             ResetClicks();
+            anim.SetInteger("numberOfClicks", numberOfClicks);
             DoAction(numberOfClicks,target);
-
         }
         #endregion
 
@@ -115,22 +116,22 @@ namespace TriforkTest
                 case 5:
                     //change to magenta
                     target.GetComponent<Image>().color = Color.magenta;
-                    anim.SetInteger("numberOfClicks", 5);
+                    
                     break;
                 case 2:
                     //red
                     target.GetComponent<Image>().color = Color.red;
-                    anim.SetInteger("numberOfClicks", 2);
+                    //anim.SetInteger("numberOfClicks", 2);
                     break;
                 case 1:
                     //blue
                     target.GetComponent<Image>().color = Color.blue;
-                    anim.SetInteger("numberOfClicks", 1);
+                    //anim.SetInteger("numberOfClicks", 1);
                     break;
                 default:
                     //green
                     target.GetComponent<Image>().color = Color.green;
-                    anim.SetInteger("numberOfClicks", 0);
+                    //anim.SetInteger("numberOfClicks", 0);
                     break;
             }
         }
