@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 namespace TriforkTest
 {
+    [System.Serializable]
+    public class BoolEvent : UnityEvent<bool>
+    {
+
+    }
     public class ButtonActions : MonoBehaviour
     {
 
@@ -15,12 +21,20 @@ namespace TriforkTest
         private Button target,random;
         [SerializeField]
         private TMP_Text clickText;
+        [SerializeField]
+        private Animator anim;
 
-        private bool runningReset, running;
         private int numberOfClicks = 0;
 
-        public Animator anim;
-
+        public BoolEvent resetEvent;
+        private void Start()
+        {
+            if(resetEvent == null)
+            {
+                resetEvent = new BoolEvent();
+            }
+            resetEvent.AddListener(CleanUp);
+        }
         // Update is called once per frame
         void Update()
         {
@@ -28,64 +42,64 @@ namespace TriforkTest
             
         }
 
-        #region timers
-        /// <summary>
-        /// Starts the 2 seconds interval timer for main game logic.
-        /// Uses the bool running as a defensive param.
-        /// </summary>
-        public void StartTimer()
-        {
-            if (!running)
-            {
-                timer = StartCoroutine(Timer());
-                running = !running;
-            }
-        }
-        /// <summary>
-        /// 2 second loop that only triggers on first click and does not reset by subsequent clicks
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerator Timer()
-        {
+        //#region timers
+        ///// <summary>
+        ///// Starts the 2 seconds interval timer for main game logic.
+        ///// Uses the bool running as a defensive param.
+        ///// </summary>
+        //public void StartTimer()
+        //{
+        //    if (!running)
+        //    {
+        //        running = !running;
+        //        timer = StartCoroutine(Timer());
+        //    }
+        //}
+        ///// <summary>
+        ///// 2 second loop that only triggers on first click and does not reset by subsequent clicks
+        ///// </summary>
+        ///// <returns></returns>
+        //private IEnumerator Timer()
+        //{
 
-            for (int i = 0; i < 2; i++)
-            {
-                yield return new WaitForSeconds(1);
-            }
-            //cleanup
-            anim.SetInteger("numberOfClicks", numberOfClicks);
-            DoAction(numberOfClicks,target);
-            ResetClicks();
-            running = !running;
-        }
-        /// <summary>
-        /// checks to see if coroutine is running to start/restart the timer
-        /// Uses bool runningReset as defensive param
-        /// </summary>
-        public void StartResetTimer()
-        {
-            if (runningReset)
-            {
-                runningReset = !runningReset;
-                StopCoroutine(resetTimer);
-            }
-            runningReset = !runningReset;
-            resetTimer = StartCoroutine(ResetTimer());
-        }
+        //    for (int i = 0; i < 2; i++)
+        //    {
+        //        yield return new WaitForSeconds(1);
+        //    }
+        //    //cleanup
+        //    running = !running;
+        //    //anim.SetInteger("numberOfClicks", numberOfClicks);
+        //    //DoAction(numberOfClicks,target);
+        //    //ResetClicks();
+        //}
+        ///// <summary>
+        ///// checks to see if coroutine is running to start/restart the timer
+        ///// Uses bool runningReset as defensive param
+        ///// </summary>
+        //public void StartResetTimer()
+        //{
+        //    if (runningReset)
+        //    {
+        //        runningReset = !runningReset;
+        //        StopCoroutine(resetTimer);
+        //    }
+        //    runningReset = !runningReset;
+        //    resetTimer = StartCoroutine(ResetTimer());
+        //}
 
-        //for 5 second rule
-        private IEnumerator ResetTimer()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                yield return new WaitForSeconds(1);
-            }
-            //cleanup
-            ResetClicks();
-            anim.SetInteger("numberOfClicks", numberOfClicks);
-            DoAction(numberOfClicks,target);
-        }
-        #endregion
+        ////for 5 second rule
+        //private IEnumerator ResetTimer()
+        //{
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        yield return new WaitForSeconds(1);
+        //    }
+        //    //cleanup
+        //    //ResetClicks();
+        //    //anim.SetInteger("numberOfClicks", numberOfClicks);
+        //    //DoAction(numberOfClicks,target);
+        //}
+        //#endregion
 
         #region Do random
         public void DoRando()
@@ -105,6 +119,23 @@ namespace TriforkTest
         public void ResetClicks()
         {
             numberOfClicks = 0;
+        }
+
+        public void CleanUp(bool resetTimer)
+        {
+            if (!resetTimer)
+            {
+                anim.SetInteger("numberOfClicks", numberOfClicks);
+                DoAction(numberOfClicks, target);
+                ResetClicks();
+            }
+            else
+            {
+                ResetClicks();
+                anim.SetInteger("numberOfClicks", numberOfClicks);
+                DoAction(numberOfClicks, target);
+            }
+            
         }
         #endregion
 
