@@ -23,30 +23,8 @@ public class PinchZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.touchCount >= 2)
-        //{
-        //    //Current touches
-        //    Touch touch0ThisFrame = Input.GetTouch(0);
-        //    Touch touch1ThisFrame = Input.GetTouch(1);
 
-        //    //touches last frame
-        //    touch0PrevFrame = touch0ThisFrame.position - touch0ThisFrame.deltaPosition;
-        //    touch1PrevFrame = touch1ThisFrame.position - touch1ThisFrame.deltaPosition;
-
-        //    //deltas
-        //    float previousTouchDeltaMagnitude = (touch0PrevFrame - touch1PrevFrame).magnitude;
-        //    float currFrameTouchDeltaMagnitude = (touch1ThisFrame.position - touch1ThisFrame.position).magnitude;
-
-        //    float deltaMagnitudeDifference = previousTouchDeltaMagnitude - currFrameTouchDeltaMagnitude;
-
-        //    //main.fieldOfView += deltaMagnitudeDifference * .005f;
-        //    //main.fieldOfView = Mathf.Clamp(main.fieldOfView, .1f, 179.9f);
-        //    //deltaDistance = distance - tempDistance;
-
-        //    //touchTxt.text = "is it negative? " + (distance - tempDistance);
-
-
-        // If there are two touches on the device...
+        // If there are two touches on the device.
         if (Input.touchCount == 2)
         {
             // Store both touches.

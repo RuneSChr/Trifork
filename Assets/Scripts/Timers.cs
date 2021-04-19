@@ -7,7 +7,8 @@ public class Timers : MonoBehaviour
     [SerializeField]
     private TriforkTest.ButtonActions actions;
     private bool running, runningReset;
-    private IEnumerator timer,resetTimer;
+    private Coroutine resetTimer;
+    //private IEnumerator timer;
 
     
     /// <summary>
@@ -49,10 +50,10 @@ public class Timers : MonoBehaviour
         if (runningReset)
         {
             runningReset = !runningReset;
-            StopCoroutine(ResetTimer());
+            StopCoroutine(resetTimer);
         }
         runningReset = !runningReset;
-        StartCoroutine(ResetTimer());
+        resetTimer = StartCoroutine(ResetTimer());
     }
 
     //for 5 second rule
