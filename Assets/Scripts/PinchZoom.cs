@@ -23,27 +23,49 @@ public class PinchZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // If there are two touches on the device.
-        if (Input.touchCount == 2)
+        if (Input.touchCount >= 2)
         {
-            // Store both touches.
-            touchZero = Input.GetTouch(0);
-            touchOne = Input.GetTouch(1);
+            //Current touches
+            Touch touch0ThisFrame = Input.GetTouch(0);
+            Touch touch1ThisFrame = Input.GetTouch(1);
 
-            // Find the position in the previous frame of each touch.
-            touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+            //touches last frame
+            touch0PrevFrame = touch0ThisFrame.position - touch0ThisFrame.deltaPosition;
+            touch1PrevFrame = touch1ThisFrame.position - touch1ThisFrame.deltaPosition;
 
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+            //deltas
+            float previousTouchDeltaMagnitude = (touch0PrevFrame - touch1PrevFrame).magnitude;
+            float currFrameTouchDeltaMagnitude = (touch0ThisFrame.position - touch1ThisFrame.position).magnitude;
 
-            // Find the difference in the distances between each frame.
-            deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+            float deltaMagnitudeDifference = previousTouchDeltaMagnitude - currFrameTouchDeltaMagnitude;
 
-            main.fieldOfView += deltaMagnitudeDiff * zoomSpeed;
+            main.fieldOfView += deltaMagnitudeDifference * zoomSpeed;
             main.fieldOfView = Mathf.Clamp(main.fieldOfView, .1f, 179.9f);
+            
+
+            //touchTxt.text = "is it negative? " + (distance - tempDistance);
+
+
+            // If there are two touches on the device...
+            //    if (Input.touchCount == 2)
+            //{
+            //    // Store both touches.
+            //    touchZero = Input.GetTouch(0);
+            //    touchOne = Input.GetTouch(1);
+
+            //    // Find the position in the previous frame of each touch.
+            //    touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            //    touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            //    // Find the magnitude of the vector (the distance) between the touches in each frame.
+            //    prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            //    touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            //    // Find the difference in the distances between each frame.
+            //    deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            //    main.fieldOfView += deltaMagnitudeDiff * zoomSpeed;
+            //    main.fieldOfView = Mathf.Clamp(main.fieldOfView, .1f, 179.9f);
         }
     }
 }

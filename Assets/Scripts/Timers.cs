@@ -8,9 +8,8 @@ public class Timers : MonoBehaviour
     private TriforkTest.ButtonActions actions;
     private bool running, runningReset;
     private Coroutine resetTimer;
-    //private IEnumerator timer;
+  
 
-    
     /// <summary>
     /// Starts the 2 seconds interval timer for main game logic.
     /// Uses the bool running as a defensive param.
@@ -29,7 +28,6 @@ public class Timers : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Timer()
     {
-
         for (int i = 0; i < 2; i++)
         {
             yield return new WaitForSeconds(1);
@@ -37,9 +35,6 @@ public class Timers : MonoBehaviour
         //cleanup
         running = !running;
         actions.resetEvent.Invoke(false);
-        //anim.SetInteger("numberOfClicks", numberOfClicks);
-        //DoAction(numberOfClicks,target);
-        //ResetClicks();
     }
     /// <summary>
     /// checks to see if coroutine is running to start/restart the timer
@@ -63,11 +58,7 @@ public class Timers : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
         }
-        //cleanup
         actions.resetEvent.Invoke(true);
-        //ResetClicks();
-        //anim.SetInteger("numberOfClicks", numberOfClicks);
-        //DoAction(numberOfClicks,target);
     }
-   
+
 }

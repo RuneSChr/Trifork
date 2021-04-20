@@ -16,8 +16,6 @@ namespace TriforkTest
     {
 
         [SerializeField]
-        private Coroutine resetTimer, timer, difference;
-        [SerializeField]
         private Button target,random;
         [SerializeField]
         private TMP_Text clickText;
@@ -102,6 +100,9 @@ namespace TriforkTest
         //#endregion
 
         #region Do random
+        /// <summary>
+        /// creates a random integer between 1 and 5 which is used in the state machine
+        /// </summary>
         public void DoRando()
         {
             int rand = Random.Range(1, 6);
@@ -110,20 +111,27 @@ namespace TriforkTest
         #endregion
 
         #region helper methods
-       
+       /// <summary>
+       /// increment numberOfClicks by 1
+       /// </summary>
         public void ClickIncrease()
         {
             numberOfClicks++;
         }
-
+        /// <summary>
+        /// Set numberOfClicks back to 0
+        /// </summary>
         public void ResetClicks()
         {
             numberOfClicks = 0;
         }
-
-        public void CleanUp(bool resetTimer)
+        /// <summary>
+        /// Cleanup method for reset event
+        /// </summary>
+        /// <param name="resetTimer"></param>
+        public void CleanUp(bool resetTimer5Sec)
         {
-            if (!resetTimer)
+            if (!resetTimer5Sec)
             {
                 anim.SetInteger("numberOfClicks", numberOfClicks);
                 DoAction(numberOfClicks, target);
@@ -140,6 +148,11 @@ namespace TriforkTest
         #endregion
 
         #region state machine
+        /// <summary>
+        /// protected statemachine for targeted button actions, dependent on numberOfClicks.
+        /// </summary>
+        /// <param name="numberOfClicks"></param>
+        /// <param name="target"></param>
         protected void DoAction(int numberOfClicks, Button target)
         {            
             switch (numberOfClicks)
