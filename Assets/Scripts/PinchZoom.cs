@@ -9,10 +9,9 @@ public class PinchZoom : MonoBehaviour
     [SerializeField]
     private Camera main;
 
-    private float prevTouchDeltaMag, touchDeltaMag, deltaMagnitudeDiff;
+    [SerializeField]
     private float zoomSpeed = 0.5f;
-    private Vector2 touch0PrevFrame, touch1PrevFrame, touchZeroPrevPos, touchOnePrevPos;
-    private Touch touchZero, touchOne;
+    private Vector2 touch0PrevFrame, touch1PrevFrame;
 
     // Start is called before the first frame update
     void Start()
